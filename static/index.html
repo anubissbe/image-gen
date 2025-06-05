@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stable Diffusion Image Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stable Diffusion Image Generator</h1>
+        
+        <div class="main-content">
+            <div class="control-panel">
+                <form id="generationForm">
+                    <div class="form-group">
+                        <label for="prompt">Prompt:</label>
+                        <textarea id="prompt" name="prompt" rows="3" required 
+                                  placeholder="Describe the image you want to generate..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="negative_prompt">Negative Prompt (optional):</label>
+                        <textarea id="negative_prompt" name="negative_prompt" rows="2" 
+                                  placeholder="What you don't want in the image..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="width">Width:</label>
+                            <select id="width" name="width">
+                                <option value="256">256</option>
+                                <option value="384">384</option>
+                                <option value="512" selected>512</option>
+                                <option value="640">640</option>
+                                <option value="768">768</option>
+                                <option value="896">896</option>
+                                <option value="1024">1024</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="height">Height:</label>
+                            <select id="height" name="height">
+                                <option value="256">256</option>
+                                <option value="384">384</option>
+                                <option value="512" selected>512</option>
+                                <option value="640">640</option>
+                                <option value="768">768</option>
+                                <option value="896">896</option>
+                                <option value="1024">1024</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="num_inference_steps">Steps:</label>
+                            <input type="range" id="num_inference_steps" name="num_inference_steps" 
+                                   min="1" max="100" value="25" step="1">
+                            <span id="steps_value">25</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guidance_scale">Guidance Scale:</label>
+                            <input type="range" id="guidance_scale" name="guidance_scale" 
+                                   min="1" max="20" value="7.5" step="0.5">
+                            <span id="guidance_value">7.5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="seed">Seed (optional):</label>
+                        <input type="number" id="seed" name="seed" 
+                               placeholder="Leave empty for random">
+                        <button type="button" id="randomSeed" class="btn-secondary">Random</button>
+                    </div>
+                    
+                    <button type="submit" id="generateBtn" class="btn-primary">Generate Image</button>
+                </form>
+                
+                <div id="status" class="status"></div>
+                
+                <div class="model-info" id="modelInfo">
+                    <h3>Model Information</h3>
+                    <p>Loading...</p>
+                </div>
+            </div>
+            
+            <div class="image-panel">
+                <div id="imageContainer" class="image-container">
+                    <div class="placeholder">
+                        <p>Generated images will appear here</p>
+                    </div>
+                </div>
+                
+                <div id="imageControls" class="image-controls" style="display: none;">
+                    <button id="downloadBtn" class="btn-secondary">Download Image</button>
+                    <button id="copyPromptBtn" class="btn-secondary">Copy Settings</button>
+                </div>
+                
+                <div id="generationHistory" class="history">
+                    <h3>Generation History</h3>
+                    <div id="historyList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
