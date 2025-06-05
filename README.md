@@ -196,7 +196,11 @@ The first run will download the Stable Diffusion model (~5GB). This may take sev
 
 ### 1. Container Startup
 ```mermaid
-Container Start → Install Dependencies → Start FastAPI → Load Model → Ready
+graph LR
+    A[Container Start] --> B[Install Dependencies]
+    B --> C[Start FastAPI]
+    C --> D[Load Model]
+    D --> E[Ready]
 ```
 
 1. Docker builds the image with all system and Python dependencies
@@ -207,7 +211,11 @@ Container Start → Install Dependencies → Start FastAPI → Load Model → Re
 
 ### 2. Image Generation Flow
 ```mermaid
-User Request → API Validation → Model Pipeline → Image Generation → Response
+graph LR
+    A[User Request] --> B[API Validation]
+    B --> C[Model Pipeline]
+    C --> D[Image Generation]
+    D --> E[Response]
 ```
 
 1. **Request**: User submits prompt via Web UI or API
