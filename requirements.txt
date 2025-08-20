@@ -4,7 +4,7 @@ uvicorn[standard]==0.24.0
 pillow==10.3.0
 torch==2.7.1
 torchvision==0.16.0
-diffusers==0.21.4
+diffusers==0.35.1
 transformers==4.51.0
 accelerate==0.24.1
 safetensors==0.4.0
